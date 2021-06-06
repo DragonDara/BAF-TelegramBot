@@ -30,7 +30,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://aqueous-headland-18855.com/' + TOKEN)
+    bot.set_webhook(url='https://aqueous-headland-18855.herokuapp.com/' + TOKEN)
     return "!", 200
 
 
