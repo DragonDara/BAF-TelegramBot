@@ -19,9 +19,9 @@ def echo_message(message):
     bot.reply_to(message, message.text)
 
 @bot.message_handler(commands=['getpos'])
-def getpos():
+def getpos(message):
     r = requests.get('https://baf-backend.azurewebsites.net/spot/get-open-position?BaseCurrency=DODO&QuoteCurrency=USDT')    
-    bot.reply_to(r.text)
+    bot.reply_to(message, r.text)
 
 
 
