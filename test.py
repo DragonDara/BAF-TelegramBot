@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, request
-
+import requests
 import telebot
 
 TOKEN = "1895688998:AAE7j7nSXQm8dZ942zT4OUcKKqXXY4w_frk"
@@ -17,6 +17,12 @@ def start(message):
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def echo_message(message):
     bot.reply_to(message, message.text)
+
+@bot.message_handler(commands=['getpos'])
+def getpos(message):
+    r = requests.get('https://baf-backend.azurewebsites.net/spot/get-open-position?BaseCurrency=DODO&QuoteCurrency=USDT')    
+    bot.reply_to(message, r.text)
+
 
 
 @server.route('/' + TOKEN, methods=['POST'])
